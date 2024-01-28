@@ -38,7 +38,7 @@ const oldUser = await UserModel.findOne({email:email})
 const hashpassowrd = await bcrypt.hash(password,10)
 
 if(oldUser){
-     return res.json({ message:"User already register Please Login!!"})
+     return res.status(201).json({ message:"User already register Please Login!!"})
  }
 
  try{
@@ -51,7 +51,7 @@ if(oldUser){
     res.status(200).json({message:"User register Successfully", username:username})
  }
  catch(err){
-  res.json({message:"User register error"})
+  res.status(201).json({message:"User register error"})
  }
 
 })
